@@ -1,7 +1,6 @@
-"use strict";
 
 //creating prompt in terminal
-var inquirer = require('inquirer');
+var inquirer = require("inquirer");
 
 //install mysql
 var mysql = require("mysql");
@@ -22,33 +21,44 @@ connection.connect(function (err) {
 
 inquirer
   .prompt([
-      {
-    //prompt type checkboxes
-      type: 'checkbox',
-      name: 'postOrBid',
+    {
       //first screening question to determine if the user should be sent to the post or bid screen
-      message: 'What are you here for today?',
+      type: "list",
+      message: "What are you here for today?",
+      name: "postOrBid",
       //array of possible choices
-      choices:['Post an item', 'Bid on an item']  
-  }
-])
+      choices: ["Post an item", new inquirer.Separator(), "Bid on an item"],
+    },
+  ])
   .then(answers => {
-      console.log('answer :', JSON.stringify(answers.postOrBid));
-    //user's answers
-
-//if answers === 'Post an item --> create input promt, add to biddingList
-//if answers === 'Bid an item --> show all items in the database in selection prompt
-
-
+      var answers = JSON.stringify(answers.postOrBid);
+    console.log('answers :' + answers);
+   
+    if (answers === answers) {
+      console.log("these are the available items for bidding...");
+      showBids();
+    };
+   
+    //if answers === 'Post an item --> create input promt, add to biddingList
+    //if answers === 'Bid an item --> show all items in the database in selection prompt
   })
   .catch((error) => {
     if (error.isTtyError) {
       // Prompt couldn't be rendered in the current environment
-   console.log(err.code);
+      console.log(err.code);
     }
     // } else {
     //   // Something else when wrong
     // }
   });
 
-  
+//function to query all data available for bidding
+function showBids() {
+  connection.query("SELECT * FROM bids", function (err, res) {
+    if (err) throw err;
+console.log(JSON.stringify(res))
+    // for (var i = 0; i < res.length; i++) {
+    //   console.log(res[i] + "\n");
+    // }
+  });
+}
