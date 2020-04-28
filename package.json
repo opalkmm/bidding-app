@@ -1,0 +1,24 @@
+{
+  "name": "bidding-app",
+  "version": "1.0.0",
+  "description": "this app records item/ product input and determine the winning bidder, using node.js and mysql database  (npm: inquirer)",
+  "main": "logic.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/opalkmm/bidding-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/opalkmm/bidding-app/issues"
+  },
+  "homepage": "https://github.com/opalkmm/bidding-app#readme",
+  "dependencies": {
+    "inquirer": "^7.1.0",
+    "mysql": "^2.18.1"
+  }
+}
