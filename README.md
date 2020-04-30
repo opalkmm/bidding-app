@@ -2,16 +2,16 @@
 
 this bidding app allows users to bid on the existing items in the database or create a new one.   
 
-#How the Bidding App works:
+## How the Bidding App works:
 1. prompt user with selection to either post a new item for bidding or bid on the existing ones
   1.1 post an item: with username, item, and bid price input. This information will be added to the database.
   1.2 bid on the item: all updated bidding data table will be shown so that the user can select based on the ID number and provide a new bid. The program will determine the winning bidder, which will reflect in the database.
 
-#technologies used: 
+## technologies used: 
   - Node.js 
   - MySQL
 
-#packages installed: 
+## packages installed: 
   - inquirer
   - mysql
   - easy-table
